@@ -103,7 +103,7 @@ def split_EN_ZH(keyPhrase):
 
 
 def focusedCrawler(url, keyPhrase):
-    time.sleep(1)
+    time.sleep(0.1)
     # print(url)
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -161,9 +161,8 @@ print(quires)
 f.close()
 
 
-
+count = 0
 for query in quires:
-    count = 0
     for i in range(5):
         # print(urllists[count])
         focusedCrawler(urllists[count], keyPhrase=query)
