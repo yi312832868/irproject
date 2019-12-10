@@ -146,12 +146,28 @@ def focusedCrawler(url, keyPhrase):
 
 f = open("url.txt", 'r')
 lines = f.readlines()
-lists = []
+urllists = []
 for line in lines:
-    lists.append(line)
+    urllists.append(line)
+    print(urllists)
+f.close()
 
-print(list)
+f = open("queries.txt", 'r')
+lines = f.readlines()
+quires = []
+for line in lines:
+    quires.append(line)
+print(quires)
+f.close()
 
-for x in lists:
-    y = x.split()
-    focusedCrawler(y[0],keyPhrase='特斯拉car performance')
+for query in quires:
+    count = 0
+    for i in range(5):
+        print(urllists[i])
+        focusedCrawler(urllists[i], keyPhrase=query)
+
+
+
+# for x in urllists:
+#     y = x.split()
+#     focusedCrawler(y[0], keyPhrase='特斯拉car performance')
