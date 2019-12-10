@@ -148,25 +148,26 @@ f = open("url.txt", 'r')
 lines = f.readlines()
 urllists = []
 for line in lines:
-    urllists.append(line)
-    print(urllists)
+    urllists.append(line[:len(line)-1])
+print(urllists)
 f.close()
 
 f = open("queries.txt", 'r')
 lines = f.readlines()
 quires = []
 for line in lines:
-    quires.append(line)
+    quires.append(line[:len(line)-1])
 print(quires)
 f.close()
+
+
 
 for query in quires:
     count = 0
     for i in range(5):
-        print(urllists[i])
-        focusedCrawler(urllists[i], keyPhrase=query)
-
-
+        # print(urllists[count])
+        focusedCrawler(urllists[count], keyPhrase=query)
+        count += 1
 
 # for x in urllists:
 #     y = x.split()
