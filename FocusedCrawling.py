@@ -144,7 +144,7 @@ def focusedCrawler(url, keyPhrase):
 
 #focusedCrawler(url='https://www.tesla.com/models', keyPhrase='特斯拉car performance')
 
-f = open("1.txt", 'r')
+f = open("url.txt", 'r')
 lines = f.readlines()
 lists = []
 for line in lines:
