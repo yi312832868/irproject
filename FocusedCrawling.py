@@ -104,8 +104,12 @@ def split_EN_ZH(keyPhrase):
 
 def focusedCrawler(url, keyPhrase):
     time.sleep(0.1)
+    # max redirect
+    session = requests.Session()
+    session.max_redirects = 60
+
     # print(url)
-    response = requests.get(url)
+    response = session.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     head = str(soup.head)
     # <head> </head>     <title></title>
@@ -139,34 +143,34 @@ def focusedCrawler(url, keyPhrase):
         B += allwords[word] * allwords[word]
     Denominator = (A * B) ** 0.5  # 分母
     result = molecule / Denominator
-    print("url:" + url + "\n cos:" + str(result))
+    print("url:" + url + " cos:" + str(result) + " key: " + keyPhrase)
 
 
-#focusedCrawler(url='https://www.tesla.com/models', keyPhrase='特斯拉car performance')
+focusedCrawler(url='https://baike.baidu.com/item/G20%E5%B3%B0%E4%BC%9A', keyPhrase='news Trump 中国')
 
-f = open("url.txt", 'r')
-lines = f.readlines()
-urllists = []
-for line in lines:
-    urllists.append(line[:len(line)-1])
-print(urllists)
-f.close()
-
-f = open("queries.txt", 'r')
-lines = f.readlines()
-quires = []
-for line in lines:
-    quires.append(line[:len(line)-1])
-print(quires)
-f.close()
-
-
-count = 0
-for query in quires:
-    for i in range(5):
-        # print(urllists[count])
-        focusedCrawler(urllists[count], keyPhrase=query)
-        count += 1
+# f = open("url.txt", 'r')
+# lines = f.readlines()
+# urllists = []
+# for line in lines:
+#     urllists.append(line[:len(line)-1])
+# print(urllists)
+# f.close()
+#
+# f = open("queries.txt", 'r')
+# lines = f.readlines()
+# quires = []
+# for line in lines:
+#     quires.append(line[:len(line)-1])
+# print(quires)
+# f.close()
+#
+#
+# count = 0
+# for query in quires:
+#     for i in range(5):
+#         # print(urllists[count])
+#         focusedCrawler(urllists[count], keyPhrase=query)
+#         count += 1
 
 # for x in urllists:
 #     y = x.split()
