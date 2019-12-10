@@ -104,7 +104,7 @@ def split_EN_ZH(keyPhrase):
 
 def focusedCrawler(url, keyPhrase):
     time.sleep(1)
-    print(url)
+    # print(url)
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     head = str(soup.head)
@@ -132,7 +132,6 @@ def focusedCrawler(url, keyPhrase):
     A = 0
     B = 0
     for word in query:
-        print(word)
         if word in allwords:
             molecule += query[word] * allwords[word]
         A += query[word] * query[word]
@@ -152,6 +151,7 @@ for line in lines:
     lists.append(line)
 
 print(list)
+
 for x in lists:
-    print(x)
-    focusedCrawler(str(x),keyPhrase='特斯拉car performance')
+    y = x.split()
+    focusedCrawler(y[0],keyPhrase='特斯拉car performance')
